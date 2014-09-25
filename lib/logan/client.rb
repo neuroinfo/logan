@@ -4,6 +4,8 @@ module Logan
   class Client
     include HTTParty
     include ResponseHandler
+    
+    
 
     # Initializes the Logan shared client with information required to communicate with Basecamp
     #
@@ -14,6 +16,7 @@ module Logan
       self.class.base_uri "https://basecamp.com/#{basecamp_id}/api/v1"
       self.class.headers 'User-Agent' => user_agent
       self.auth = auth_hash
+      self.class.http_proxy Rails.application.config.proxy_address, Rails.application.config.proxy_port
     end
 
     # Updates authorization information for Logan shared client
