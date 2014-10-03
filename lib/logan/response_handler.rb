@@ -7,6 +7,14 @@ module Logan
         handle_error(response.response)
       end
     end
+    
+    def handle_single_response(response,block)
+      if success?(response.response)
+        block.call(response.parsed_response)
+      else
+        handle_error(response.response)
+      end    
+    end
 
     def handle_error(response)
       if response.kind_of? Net::HTTPUnauthorized

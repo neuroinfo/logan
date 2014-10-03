@@ -54,6 +54,11 @@ module Logan
       response = self.class.get '/projects.json'
       handle_response(response, Proc.new {|h| Logan::Project.new(h) })
     end
+    
+    def project(project_id)
+      response = self.class.get "/projects/#{project_id}.json"
+      handle_single_response(response, Proc.new {|h| Logan::Project.new(h) })    
+    end
 
     # get active Todo lists for all projects from Basecamp API
     #
