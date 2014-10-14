@@ -55,6 +55,13 @@ module Logan
       handle_response(response, Proc.new {|h| Logan::Project.new(h) })
     end
     
+    #addtional method by nis
+    def archived_projects
+      response = self.class.get '/projects/archived.json'
+      handle_response(response, Proc.new {|h| Logan::Project.new(h) })
+    end    
+    
+    #addtional method by nis
     def project(project_id)
       response = self.class.get "/projects/#{project_id}.json"
       handle_single_response(response, Proc.new {|h| Logan::Project.new(h) })    

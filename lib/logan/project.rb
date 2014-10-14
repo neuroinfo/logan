@@ -8,6 +8,9 @@ module Logan
     attr_accessor :id
     attr_accessor :name
     
+    #addtional accessor
+    attr_accessor :archived
+    
     # get active todo lists for this project from Basecamp API
     # 
     # @return [Array<Logan::TodoList>] array of active todo lists for this project
